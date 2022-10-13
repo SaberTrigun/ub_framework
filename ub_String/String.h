@@ -20,11 +20,15 @@ public:
 
     bool operator== (const String& Str);
 
+    bool operator!= (const String& Str);
+
     char& operator[] (const unsigned int index) const;
 
     //operator+= (const String& Str);
 
     unsigned int length(const String& Str);
+
+    char* data() const;
 
     //bool empty();
 
@@ -43,4 +47,4 @@ public:
 };
 }
 
-#endif __UB_STRING_H__
+#endif

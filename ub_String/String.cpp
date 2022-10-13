@@ -10,13 +10,7 @@ String::String() : str(nullptr){};
 
 String::String(const char* Str)
 {
-    u_int lengthStr = 0;
-
-    while(Str[lengthStr] != 0)
-    {
-        ++lengthStr;
-    }
-
+    u_int lengthStr = length(Str);
     str = new char[lengthStr + 1];
 
     if(str)
@@ -81,13 +75,11 @@ String& String::operator= (const String& Str)
 
 String String::operator+ (const String& Str)
 {
-    u_int lengthStrL = length(Str);
-    u_int lengthStrR = length(Str.str);
+    u_int lengthStrL = length(str);
+    u_int lengthStrR = length(Str);
     u_int lengthStr = lengthStrL + lengthStrR;
-
     String tempStr;
     tempStr.str = new char[lengthStr + 1];
-
     u_int counter = 0;
 
     if(tempStr.str)
@@ -111,7 +103,7 @@ bool String::operator== (const String& Str)
 {
     bool result = false;
 
-    if (length(Str) == length(Str.str))
+    if (length(Str) == length(str))
     {
         for(int i = 0; i < length(Str); ++i)
         {
@@ -123,6 +115,30 @@ bool String::operator== (const String& Str)
             {
                 result = false;
                 break;
+            }
+        }
+    }
+
+    return result;
+}
+
+
+bool String::operator!= (const String& Str)
+{
+    bool result = true;
+
+    if (length(Str) == length(str))
+    {
+        for(int i = 0; i < length(Str); ++i)
+        {
+            if(str[i] != Str.str[i])
+            {
+                result = true;
+                break;
+            }
+            else
+            {
+                result = false;
             }
         }
     }
@@ -146,6 +162,12 @@ char& String::operator[] (const u_int index) const
     }
 
     return str[index];
+}
+
+
+char* String::data() const
+{
+    return str;
 }
 
 

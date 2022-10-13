@@ -1,8 +1,14 @@
 #include "String.h"
+#include <iostream>
 using namespace UB;
+using namespace std;
 
 int main(){
-    String stroka;
+    String str1 = "Qwertyice";
+    String str2 = "Qwerty";
+    String str3;
+    str3 = str1 + str2;
+    cout << str3.data() << '\n';
 
 
 
