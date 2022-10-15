@@ -10,7 +10,13 @@ String::String() : str(nullptr){};
 
 String::String(const char* Str)
 {
-    u_int lengthStr = length(Str);
+    u_int lengthStr = 0;
+
+    while(Str[lengthStr] != '\0')
+    {
+        ++lengthStr;
+    }
+
     str = new char[lengthStr + 1];
 
     if(str)
@@ -42,7 +48,7 @@ u_int String::length(const String& Str)
 {
     u_int lengthStr = 0;
 
-    while(Str[lengthStr] != 0)
+    while(Str.str[lengthStr] != 0)
     {
         ++lengthStr;
     }
